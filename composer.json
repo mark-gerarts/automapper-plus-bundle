@@ -2,6 +2,7 @@
     "name": "mark-gerarts/automapper-plus-bundle",
     "description": "A Symfony bundle for AutoMapper+",
     "type": "library",
+    "keywords": ["AutoMapper", "Bundle"],
     "license": "MIT",
     "authors": [
         {
@@ -9,8 +10,14 @@
             "email": "mark.gerarts@gmail.com"
         }
     ],
+    "autoload": {
+       "psr-4": {
+            "AutoMapperPlus\\AutoMapperPlusBundle\\": [""]
+       }
+    },
     "require": {
         "php": ">=7.0.0",
-        "symfony/framework-bundle": "^3.3"
+        "symfony/framework-bundle": "^3.3",
+        "mark-gerarts/auto-mapper-plus": "@dev"
     }
 }
