@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        public: true
+
+    automapper_plus.configuration:
+        class: AutoMapperPlus\Configuration\AutoMapperConfig
+
+    automapper_plus.mapper_factory:
+        class: AutoMapperPlus\AutoMapperPlusBundle\AutoMapperFactory
+        arguments:
+            - '@automapper_plus.configuration'
+
+    automapper_plus.mapper:
+        class: AutoMapperPlus\AutoMapper
+        factory: ['@automapper_plus.mapper_factory', create]
