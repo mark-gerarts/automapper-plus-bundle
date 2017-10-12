@@ -1,3 +1,3 @@
 # AutoMapperPlusBundle
 
-A Symfony bundle for [AuotoMapper+](https://www.github.com/mark-gerarts/automapper-plus).
+A Symfony bundle for [AutoMapper+](https://www.github.com/mark-gerarts/automapper-plus).
