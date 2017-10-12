@@ -13,7 +13,7 @@ To see it in action, check out the [demo app](https://github.com/mark-gerarts/au
 The bundle is available on packagist:
 
 ```bash
-$ composer install mark-gerarts/automapper-plus-bundle
+$ composer require mark-gerarts/automapper-plus-bundle
 ```
 
 Don't forget to register the bundle:
