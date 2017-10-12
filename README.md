@@ -1,6 +1,12 @@
 # AutoMapperPlusBundle
 
 A Symfony bundle for [AutoMapper+](https://www.github.com/mark-gerarts/automapper-plus).
+To see it in action, check out the [demo app](https://github.com/mark-gerarts/automapper-plus-demo-app).
+
+## Table of Contents
+* [Installation](#installation)
+* [Usage](#usage)
+* [Further reading](#further-reading)
 
 ## Installation
 
