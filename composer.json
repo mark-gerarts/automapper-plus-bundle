@@ -18,6 +18,6 @@
     "require": {
         "php": ">=7.0.0",
         "symfony/framework-bundle": "^3.3",
-        "mark-gerarts/auto-mapper-plus": "@dev"
+        "mark-gerarts/auto-mapper-plus": "^1.0"
     }
 }
