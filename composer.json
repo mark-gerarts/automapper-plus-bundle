@@ -17,7 +17,7 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "symfony/framework-bundle": "^3.3",
+        "symfony/framework-bundle": "^3.3|~4.0",
         "mark-gerarts/auto-mapper-plus": "^1.0"
     }
 }
