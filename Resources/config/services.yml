@@ -13,3 +13,6 @@ services:
     automapper_plus.mapper:
         class: AutoMapperPlus\AutoMapper
         factory: ['@automapper_plus.mapper_factory', create]
+
+    # Add alias so that autowiring works
+    AutoMapperPlus\AutoMapperInterface: '@automapper_plus.mapper'
