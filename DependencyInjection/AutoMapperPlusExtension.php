@@ -2,6 +2,7 @@
 
 namespace AutoMapperPlus\AutoMapperPlusBundle\DependencyInjection;
 
+use AutoMapperPlus\AutoMapperPlusBundle\AutoMapperConfiguratorInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -24,5 +25,8 @@ class AutoMapperPlusExtension extends Extension
             new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('services.yml');
+
+        $container->registerForAutoconfiguration(AutoMapperConfiguratorInterface::class)
+            ->addTag('automapper_plus.configurator');
     }
 }
