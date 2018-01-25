@@ -14,5 +14,7 @@ services:
         class: AutoMapperPlus\AutoMapper
         factory: ['@automapper_plus.mapper_factory', create]
 
-    # Add alias so that autowiring works
+    # Add aliases so that autowiring works
     AutoMapperPlus\AutoMapperInterface: '@automapper_plus.mapper'
+    AutoMapperPlus\AutoMapperPlusBundle\AutoMapperFactory: '@automapper_plus.mapper_factory'
+    AutoMapperPlus\Configuration\AutoMapperConfigInterface: '@automapper_plus.configuration'
