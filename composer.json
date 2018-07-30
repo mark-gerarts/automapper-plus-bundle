@@ -1,7 +1,7 @@
 {
     "name": "mark-gerarts/automapper-plus-bundle",
     "description": "A Symfony bundle for AutoMapper+",
-    "type": "library",
+    "type": "symfony-bundle",
     "keywords": ["AutoMapper", "Bundle"],
     "license": "MIT",
     "authors": [
