@@ -4,7 +4,11 @@ namespace AutoMapperPlus\AutoMapperPlusBundle;
 
 use AutoMapperPlus\Configuration\AutoMapperConfigInterface;
 
-// @todo: figure out a better name..
+/**
+ * Interface AutoMapperConfiguratorInterface
+ *
+ * @package AutoMapperPlus\AutoMapperPlusBundle
+ */
 interface AutoMapperConfiguratorInterface
 {
     /**
