@@ -13,3 +13,10 @@ services:
     automapper_plus.mapper:
         class: AutoMapperPlus\AutoMapper
         factory: ['@automapper_plus.mapper_factory', create]
+
+    automapper_plus.default_options_configurator:
+        public: false
+        class: AutoMapperPlus\AutoMapperPlusBundle\DependencyInjection\DefaultOptionsConfigurator
+        arguments: []
+        tags:
+            - { name: automapper_plus.configurator, priority: 999 }
