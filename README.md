@@ -56,8 +56,9 @@ class AutoMapperConfig implements AutoMapperConfiguratorInterface
 }
 ```
 
-Next, you'll have to register this class as a service and tag it with
-`automapper_plus.configurator`
+If you use autowiring, the configurators will be picked up automatically.
+Alternatively, you'll have to register the class as a service and tag it
+with `automapper_plus.configurator`. 
 
 ```yaml
 demo.automapper_configurator:
