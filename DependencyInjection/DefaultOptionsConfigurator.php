@@ -31,13 +31,24 @@ class DefaultOptionsConfigurator implements AutoMapperConfiguratorInterface
     {
         switch ($name) {
             case 'create_unregistered_mappings':
-                if ($value) {
-                    $options->createUnregisteredMappings();
-                }
-                else {
-                    $options->dontCreateUnregisteredMappings();
-                }
+                $value
+                    ? $options->createUnregisteredMappings()
+                    : $options->dontCreateUnregisteredMappings();
                 break;
+            case 'skip_constructor':
+                $value
+                    ? $options->skipConstructor()
+                    : $options->dontSkipConstructor();
+                break;
+            case 'use_substitution':
+                $value
+                    ? $options->allowSubstitution()
+                    : $options->disallowSubstitution();
+                break;
+            case 'ignore_null_properties':
+                $value
+                    ? $options->ignoreNullProperties()
+                    : $options->dontIgnoreNullProperties();
         }
     }
 }
