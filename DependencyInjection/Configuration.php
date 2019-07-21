@@ -20,6 +20,7 @@ class Configuration implements ConfigurationInterface
                         ->booleanNode('skip_constructor')->end()
                         ->booleanNode('use_substitution')->end()
                         ->booleanNode('ignore_null_properties')->end()
+                        ->scalarNode('source_member_naming_convention')->end()
                     ->end()
                 ->end() // options
             ->end();
