@@ -1,0 +1,27 @@
+language: php
+php:
+  - 7.0
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4snapshot
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+before_install:
+  - composer self-update
+
+install:
+  - composer update --no-interaction --prefer-dist --prefer-stable
+
+script:
+  - ./vendor/bin/phpunit tests/*
+
+jobs:
+  include:
+    - stage: Test
+      php: 7.0
+      name: prefer-lowest
+      install:
+        - composer update --no-interaction --prefer-dist --prefer-stable --prefer-lowest
