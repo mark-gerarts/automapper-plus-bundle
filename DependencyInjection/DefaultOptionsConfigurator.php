@@ -49,6 +49,10 @@ class DefaultOptionsConfigurator implements AutoMapperConfiguratorInterface
                 $value
                     ? $options->ignoreNullProperties()
                     : $options->dontIgnoreNullProperties();
+                break;
+            case 'property_accessor':
+                $options->setPropertyAccessor($value);
+                break;
         }
     }
 }
