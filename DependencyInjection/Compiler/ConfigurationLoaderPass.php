@@ -61,8 +61,8 @@ class ConfigurationLoaderPass implements CompilerPassInterface
             foreach (self::SERVICE_OPTIONS as $serviceOption) {
                 if (isset($options[$serviceOption])) {
                     $serviceName = $options[$serviceOption];
-                    if (isset($serviceName)) {
-                        $options[$serviceOption] = $container->getDefinition($serviceName);
+                    if (isset($serviceName) && $container->hasDefinition($serviceName)) {
+                        $options[$serviceOption] = new Reference($serviceName);
                     }
                 }
             }
