@@ -21,6 +21,11 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('options')
                     ->children()
                         ->booleanNode('create_unregistered_mappings')->end()
+                        ->booleanNode('skip_constructor')->end()
+                        ->booleanNode('use_substitution')->end()
+                        ->booleanNode('ignore_null_properties')->end()
+                        ->scalarNode('source_member_naming_convention')->end()
+                        ->scalarNode('property_accessor')->end()
                     ->end()
                 ->end() // options
             ->end();

@@ -6,6 +6,7 @@ To see it in action, check out the [demo app](https://github.com/mark-gerarts/au
 ## Table of Contents
 * [Installation](#installation)
 * [Usage](#usage)
+* [Configuration](#configuration)
 * [Further reading](#further-reading)
 
 ## Installation
@@ -28,9 +29,11 @@ $bundles = [
 ## Usage
 
 The automapper is available as a service: `automapper_plus.mapper` (or just type hint
-the `AutoMapperPlus\AutoMapperInterface`). You can register mapping configurations by
-creating a class that implements the `AutoMapperConfiguratorInterface`. This configurator
-class will have to define a `configure` method, that gets passed the configuration object:
+the `AutoMapperPlus\AutoMapperInterface`).
+
+You can register mapping configurations by creating a class that implements the
+`AutoMapperConfiguratorInterface`. This configurator class will have to define a
+`configure` method, that gets passed the configuration object:
 
 ```php
 <?php
@@ -88,7 +91,7 @@ These options correspond with the ones of the [Options object](https://github.co
 
 Full reference:
 
-```
+```yaml
 auto_mapper_plus:
     options:
         # Only one option for now, more coming soon!

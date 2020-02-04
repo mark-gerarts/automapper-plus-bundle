@@ -21,7 +21,12 @@
         "mark-gerarts/auto-mapper-plus": "^1.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.5|^8.0",
-        "symfony/phpunit-bridge": "^3.4|^4.0"
+        "phpunit/phpunit": "^7.5|^8.0",
+        "symfony/phpunit-bridge": "^3.4|^4.0",
+        "symfony/property-access": "^3.4|^4.4",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.1"
+    },
+    "suggest": {
+        "symfony/property-access": "^3.4|^4.4"
     }
 }
