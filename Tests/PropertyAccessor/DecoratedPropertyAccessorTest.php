@@ -2,7 +2,7 @@
 
 namespace AutoMapperPlus\AutoMapperPlusBundle\Tests\PropertyAccessor;
 
-use AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\DecoratedSymfonyPropertyAccessorBridge;
+use AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\DecoratedPropertyAccessor;
 use AutoMapperPlus\AutoMapperPlusBundle\Tests\Helper\Destination;
 use AutoMapperPlus\AutoMapperPlusBundle\Tests\Helper\Source;
 use AutoMapperPlus\PropertyAccessor\PropertyAccessorInterface;
@@ -14,7 +14,7 @@ class DecoratedSymfonyPropertyAccessorBridgeTest extends PropertyAccessorTestBas
     {
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
 
-        return new DecoratedSymfonyPropertyAccessorBridge($propertyAccessor);
+        return new DecoratedPropertyAccessor($propertyAccessor);
     }
 
     public function testItMapsPrivateValues()

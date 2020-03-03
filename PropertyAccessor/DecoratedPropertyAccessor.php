@@ -9,7 +9,7 @@ use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 use Symfony\Component\PropertyAccess\Exception\UnexpectedTypeException;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface as SymfonyPropertyAccessorInterface;
 
-class DecoratedSymfonyPropertyAccessorBridge extends PropertyAccessor
+class DecoratedPropertyAccessor extends PropertyAccessor
 {
     /**
      * @var SymfonyPropertyAccessorInterface
