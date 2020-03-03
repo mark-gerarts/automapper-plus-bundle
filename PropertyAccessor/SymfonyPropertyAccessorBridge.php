@@ -3,17 +3,16 @@
 namespace AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor;
 
 use AutoMapperPlus\PropertyAccessor\PropertyAccessorInterface;
-use Symfony\Component\PropertyAccess as SYM;
+use Symfony\Component\PropertyAccess\PropertyAccessorInterface as SymfonyPropertyAccessorInterface;
 
 class SymfonyPropertyAccessorBridge implements PropertyAccessorInterface
 {
-
     /**
-     * @var SYM\PropertyAccessorInterface
+     * @var SymfonyPropertyAccessorInterface
      */
     private $propertyAccessor;
 
-    public function __construct(SYM\PropertyAccessorInterface $propertyAccessor)
+    public function __construct(SymfonyPropertyAccessorInterface $propertyAccessor)
     {
         $this->propertyAccessor = $propertyAccessor;
     }
@@ -23,8 +22,7 @@ class SymfonyPropertyAccessorBridge implements PropertyAccessorInterface
      */
     public function hasProperty($object, string $propertyName): bool
     {
-        return $this->propertyAccessor->isReadable($object, $propertyName)
-            || $this->propertyAccessor->isWritable($object, $propertyName);
+        return $this->propertyAccessor->isReadable($object, $propertyName);
     }
 
     /**

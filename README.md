@@ -77,7 +77,7 @@ across multiple classes. The choice is yours!
 
 ## Configuration
 
-The options for the mapper can be configured. Create a `config/packages/auto_mapper_plus.yaml`
+The options for the mapper can be configured. Create a `config/packages/automapper_plus.yaml`
 file (or add to your `config.yaml` for older Symfony versions) with the following contents:
 
 
@@ -89,17 +89,60 @@ auto_mapper_plus:
 
 These options correspond with the ones of the [Options object](https://github.com/mark-gerarts/automapper-plus#the-options-object).
 
-Full reference:
+Full reference (Not all options are supported at the moment, more coming soon!):
 
 ```yaml
 auto_mapper_plus:
     options:
-        # Only one option for now, more coming soon!
+        # These options are example values, and not necessarily the default
+        # ones. If an option is not provided, the base library's default will
+        # be used.
         create_unregistered_mappings: true
+        skip_constructor: true
+        use_substitution: true
+        ignore_null_properties: false
+        # Note that this should be the service name, and not necessarily the
+        # FQCN.
+        property_accessor: AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\SymfonyPropertyAccessorBridge
 ```
 
 Using the configuration is completely optional, you can just set the options directly
 on the `Options` object in one of your configurators using `$config->getOptions()`.
+
+## Symfony property accessors
+
+The bundle contains a bridge for the [Symfony PropertyAccessor](https://symfony.com/components/PropertyAccess).
+It provides 2 variants:
+
+- The `SymfonyPropertyAccessorBridge` is basically only the functionality of
+  Symfony's component, meaning you can NOT set private properties directly
+  (which is a good thing if you want to be more strict).
+- The `DecoratedPropertyAccessor` uses the Symfony property access, but falls
+  back to the default in case of failure. This means private properties will
+  be handled, even if they don't have a getter/setter.
+
+Both options provide allow to use `fromProperty` with full property paths,
+e.g. `forMember('aProperty', Operation::fromProperty('some.nested[child]'));`.
+Note that other usages of property paths have not been tested and are not
+guaranteed to work. It will be investigated in the 2.x release
+([related issue](https://github.com/mark-gerarts/automapper-plus/issues/51)).
+
+Sample service definition:
+
+```yaml
+services:
+    AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\SymfonyPropertyAccessorBridge:
+        arguments:
+            $propertyAccessor: '@property_accessor'
+```
+
+In your `automapper_plus.yaml` configuration:
+
+```yaml
+auto_mapper_plus:
+    options:
+        property_accessor: 'AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\SymfonyPropertyAccessorBridge'
+```
 
 ## Further reading
 For more info regarding the automapper itself, check out the

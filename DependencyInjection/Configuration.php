@@ -5,16 +5,19 @@ namespace AutoMapperPlus\AutoMapperPlusBundle\DependencyInjection;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 class Configuration implements ConfigurationInterface
 {
+    private const ROOT_NODE_ID = 'auto_mapper_plus';
+
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('auto_mapper_plus');
+        $treeBuilder = new TreeBuilder(self::ROOT_NODE_ID);
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = \method_exists(TreeBuilder::class, 'getRootNode')
             ? $treeBuilder->getRootNode()
-            : $treeBuilder->root('auto_mapper_plus');
+            : $treeBuilder->root(self::ROOT_NODE_ID);
 
         $rootNode
             ->children()

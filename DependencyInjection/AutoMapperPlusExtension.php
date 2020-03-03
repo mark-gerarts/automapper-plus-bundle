@@ -15,6 +15,8 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
  */
 class AutoMapperPlusExtension extends Extension
 {
+    private const DEFAULT_OPTIONS_CONFIGURATOR_SERVICE_ID = 'automapper_plus.default_options_configurator';
+
     /**
      * @inheritdoc
      */
@@ -42,6 +44,7 @@ class AutoMapperPlusExtension extends Extension
         if (empty($config['options'])) {
             // No need for the service if there aren't any options.
             $container->removeDefinition(self::DEFAULT_OPTIONS_CONFIGURATOR_SERVICE_ID);
+            return;
         }
 
         $container->setParameter(

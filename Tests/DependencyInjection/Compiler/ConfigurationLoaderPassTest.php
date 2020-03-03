@@ -39,7 +39,8 @@ class ConfigurationLoaderPassTest extends AbstractCompilerPassTestCase
             ->addArgument($symfonyPropertyAccessor);
     }
 
-    public function testCustomPropertyAccessorInConfigurator() {
+    public function testCustomPropertyAccessorInConfigurator()
+    {
         $this->compile();
         $this->assertContainerBuilderHasService('automapper_plus.default_options_configurator');
         $configurator = $this->container->getDefinition('automapper_plus.default_options_configurator');
@@ -49,7 +50,8 @@ class ConfigurationLoaderPassTest extends AbstractCompilerPassTestCase
         $this->assertEquals('custom_property_accessor', (string)$options['property_accessor']);
     }
 
-    public function testAutoMapperCustomPropertyAccessor() {
+    public function testAutoMapperCustomPropertyAccessor()
+    {
         $this->compile();
         $this->assertTrue($this->container->has('automapper_plus.mapper'));
         /** @var AutoMapper $mapper */
