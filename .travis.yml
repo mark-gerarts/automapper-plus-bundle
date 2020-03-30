@@ -34,4 +34,4 @@ install:
   - composer update $COMPOSER_FLAGS
 
 script:
-  - ./vendor/bin/phpunit tests/*
+  - ./vendor/bin/phpunit
