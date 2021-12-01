@@ -35,7 +35,7 @@ class ConfigurationLoaderPassTest extends AbstractCompilerPassTestCase
         $symfonyPropertyAccessor = $this->registerService('symfony_property_accessor', PropertyAccess::class)
         ->setFactory([PropertyAccess::class, 'createPropertyAccessor']);
         $this->serviceDefinition = $this->registerService('custom_property_accessor', SymfonyPropertyAccessorBridge::class)
-            ->setPrivate(false)
+            ->setPublic(true)
             ->addArgument($symfonyPropertyAccessor);
     }
 
