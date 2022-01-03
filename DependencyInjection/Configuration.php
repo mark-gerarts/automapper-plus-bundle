@@ -11,6 +11,9 @@ class Configuration implements ConfigurationInterface
 {
     private const ROOT_NODE_ID = 'auto_mapper_plus';
 
+    /**
+     * @return TreeBuilder
+     */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder(self::ROOT_NODE_ID);
