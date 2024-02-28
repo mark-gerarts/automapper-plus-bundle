@@ -8,7 +8,7 @@ use AutoMapperPlus\AutoMapperPlusBundle\Tests\Helper\Source;
 use AutoMapperPlus\PropertyAccessor\PropertyAccessorInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
-class DecoratedSymfonyPropertyAccessorBridgeTest extends PropertyAccessorTestBase
+class DecoratedPropertyAccessorTest extends PropertyAccessorTestBase
 {
     protected function getPropertyAccessor(): PropertyAccessorInterface
     {

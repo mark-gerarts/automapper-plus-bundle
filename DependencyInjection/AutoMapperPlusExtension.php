@@ -20,7 +20,7 @@ class AutoMapperPlusExtension extends Extension
     /**
      * @inheritdoc
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         // Load our services.
         $loader = new YamlFileLoader(
