@@ -6,6 +6,7 @@ use AutoMapperPlus\AutoMapper;
 use AutoMapperPlus\AutoMapperPlusBundle\DependencyInjection\AutoMapperPlusExtension;
 use AutoMapperPlus\AutoMapperPlusBundle\DependencyInjection\Compiler\ConfigurationLoaderPass;
 use AutoMapperPlus\AutoMapperPlusBundle\PropertyAccessor\SymfonyPropertyAccessorBridge;
+use AutoMapperPlus\AutoMapperPlusBundle\Tests\Helper\AutoMapperConfiguratorStub;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -58,6 +59,26 @@ class ConfigurationLoaderPassTest extends AbstractCompilerPassTestCase
         $mapper = $this->container->get('automapper_plus.mapper');
         $propertyAccessor = $mapper->getConfiguration()->getOptions()->getPropertyReader();
         $this->assertEquals($this->container->get('custom_property_accessor'), $propertyAccessor);
+    }
+
+    public function testConfiguratorImplementationsAreAutoTaggedWhenServiceIsAutoconfigured()
+    {
+        $this->registerService('custom_configurator', AutoMapperConfiguratorStub::class)
+            ->setAutowired(true)
+            ->setAutoconfigured(true);
+
+        $this->compile();
+
+        $this->assertContainerBuilderHasServiceDefinitionWithTag(
+            'custom_configurator',
+            'automapper_plus.configurator'
+        );
+        $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
+            'automapper_plus.mapper_factory',
+            'addConfigureCallback',
+            [new Reference('custom_configurator')],
+            1
+        );
     }
 
     /**
