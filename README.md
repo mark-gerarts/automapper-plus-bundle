@@ -17,6 +17,10 @@ The bundle is available on packagist:
 $ composer require mark-gerarts/automapper-plus-bundle
 ```
 
+## Compatibility
+
+This bundle supports Symfony `3.4` through `8.x`.
+
 Don't forget to register the bundle:
 
 ```php
@@ -59,16 +63,67 @@ class AutoMapperConfig implements AutoMapperConfiguratorInterface
 }
 ```
 
-If you use autowiring, the configurators will be picked up automatically.
-Alternatively, you'll have to register the class as a service and tag it
+If your configurator class is registered as a service and service
+autoconfiguration is enabled, the bundle will tag it automatically.
+
+For example, with a typical Symfony `services.yaml`:
+
+```yaml
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+```
+
+and a configurator class like:
+
+```php
+<?php
+
+namespace App\Mapper;
+
+use AutoMapperPlus\AutoMapperPlusBundle\AutoMapperConfiguratorInterface;
+use AutoMapperPlus\Configuration\AutoMapperConfigInterface;
+
+class AutoMapperConfig implements AutoMapperConfiguratorInterface
+{
+    public function configure(AutoMapperConfigInterface $config): void
+    {
+        // Register mappings...
+    }
+}
+```
+
+the bundle will pick it up automatically.
+
+If your configurator is not covered by service discovery, you can register it
+manually as a service. If autoconfiguration is enabled for that service, no
+manual tag is needed:
+
+```yaml
+services:
+    App\Mapper\AutoMapperConfig:
+        autowire: true
+        autoconfigure: true
+```
+
+If autoconfiguration is disabled, register the class as a service and tag it
 with `automapper_plus.configurator`. You can optionally add a priority parameter
 to the tag.
 
 
 ```yaml
-demo.automapper_configurator:
-    class: Demo\AutoMapperConfig
-    tags: ['automapper_plus.configurator']
+services:
+    App\Mapper\AutoMapperConfig:
+        tags:
+            - { name: automapper_plus.configurator }
 
 ```
 
